@@ -15,7 +15,6 @@ numbers_list = string.digits
 # print(symbols_list)
 # print(numbers_list)
 
-
 password_list = []
 for i in range(letters):
     random_str = random.choice(letters_list)
@@ -32,9 +31,14 @@ for i in range(numbers):
 print(password_list)
 random.shuffle(password_list)
 
-password = "".join(password_list)
+password = ""
+for i in password_list:
+    password += random.choice(password_list)
+
+# password = "".join(password_list)
 print(f"Your password is {password}.")
 
+# 2nd approach 
 
 # random_str = random.choices(letters_list, k=letters)
 # random_sym = random.choices(symbols_list, k=symbols)
@@ -46,6 +50,7 @@ print(f"Your password is {password}.")
 
 # password_values = random_str + random_sym + random_num
 # print(password_values)
+
 
 # random.shuffle(password_values)
 
@@ -64,6 +69,7 @@ print(f"Your password is {password}.")
 # print(password)
 
 
+# Practice
 
 # max function without using built in max function
 # num_list = []
