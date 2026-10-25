@@ -6,7 +6,7 @@ import random
 # Ask the user to guess the letter >> If in the word, then replace the blank
         # else reduce one life
 
-
+lives = 6
 # Generate random list of words
 word_list = ["Samsung", "Apple", "Nokia"]
 
@@ -24,21 +24,35 @@ placeholder = ""
 for i in range(len(random_selection)):
     placeholder += "_"
 
-# print(placeholder)
+print("Word to guess: " + placeholder)
 
+game_over = False
+correct_letters = []
 # Create an empty string called "display"
-display = ""
 
-# if the guess matches the letter in the random_selection then
-# reveal tha letter in that position AND display the rest as blanks.
 
-# unit = len(random_selection)
-# while unit != 0:
-user_input = str(input("Enter your letter: ").lower())
-for i in random_selection:
-    if i == user_input:
-        display += i
-    else:
-        display += "_"
+while not game_over:
 
-print(display)
+    user_input = str(input("Enter your letter: ").lower())
+
+    display = ""
+
+    for i in random_selection:
+        if i == user_input:
+            display += i
+            correct_letters.append(user_input)
+        elif i in correct_letters:
+            display += i
+        else:
+            display += "_"
+
+    print(f"Word to guess: {display}")
+
+    if user_input not in random_selection:
+        lives -= 1
+        if lives == 0:
+            game_over = True
+
+
+    if "_" not in display:
+        game_over = True
