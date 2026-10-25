@@ -19,8 +19,6 @@ else:
         print("You win!!!")
     elif comp_choice == 0 and user_choice == 2:
         print("Computer wins!!")
-    # elif user_choice > 2 or user_choice < 0:
-    #     print("Choose between 0 and 2.")
     elif user_choice < comp_choice:
         print("Computer wins!!!")
     elif user_choice > comp_choice:

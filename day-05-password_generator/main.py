@@ -36,6 +36,7 @@ for i in password_list:
     password += random.choice(password_list)
 
 # password = "".join(password_list)
+
 print(f"Your password is {password}.")
 
 # 2nd approach 
