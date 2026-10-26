@@ -37,6 +37,9 @@ while not game_over:
     print(correct_letters)
     user_input = str(input("Enter your letter: ").lower())
 
+    if user_input in correct_letters:
+        print("You have already guessed this letter.")
+
     for i in random_selection:
         if i == user_input:
             display += user_input
