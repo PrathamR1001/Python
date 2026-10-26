@@ -7,6 +7,7 @@ import random
         # else reduce one life
 
 lives = 6
+
 # Generate random list of words
 word_list = ["Samsung", "Apple", "Nokia"]
 
@@ -26,33 +27,38 @@ for i in range(len(random_selection)):
 
 print("Word to guess: " + placeholder)
 
-game_over = False
-correct_letters = []
 # Create an empty string called "display"
 
+game_over = False
+correct_letters = []
 
 while not game_over:
-
-    user_input = str(input("Enter your letter: ").lower())
-
     display = ""
+    print(correct_letters)
+    user_input = str(input("Enter your letter: ").lower())
 
     for i in random_selection:
         if i == user_input:
-            display += i
+            display += user_input
             correct_letters.append(user_input)
+            print(display)
         elif i in correct_letters:
             display += i
         else:
             display += "_"
-
-    print(f"Word to guess: {display}")
-
+    print(lives)
+            #print(display)
+            
+    
     if user_input not in random_selection:
         lives -= 1
         if lives == 0:
             game_over = True
-
-
+            print("You lose.") 
+    
     if "_" not in display:
         game_over = True
+        print("You Win!!!")
+
+    
+    print(f"Word to guess: {display}")
