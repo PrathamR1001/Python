@@ -1,7 +1,7 @@
 import string
 
 letters = list(string.ascii_lowercase)
-print("".join(letters))
+# print("".join(letters))
 
 # print(max(letters))
 # def decode():
@@ -81,32 +81,58 @@ print("".join(letters))
 
 # My solution
 
-def encrypt(originalText, shiftAmount):
-    new_word = ""
-    for i in originalText: 
-            index_val = letters.index(i)
-            # print(index_val)
-            new_index = index_val + shiftAmount
-            if new_index >= len(letters):
-                difference = len(letters) - index_val
-                shift_diff = shiftAmount - difference
-                new_index =  shift_diff
-            new_word += letters[new_index]
+# def encrypt(originalText, shiftAmount):
+#     new_word = ""
+#     for i in originalText: 
+#             index_val = letters.index(i)
+#             # print(index_val)
+#             new_index = index_val + shiftAmount
+#             if new_index >= len(letters):
+#                 difference = len(letters) - index_val
+#                 shift_diff = shiftAmount - difference
+#                 new_index =  shift_diff
+#             new_word += letters[new_index]
 
-    print(new_word)
+#     print(new_word)
 
-encrypt(originalText= "hello" ,shiftAmount= 2)
+# encrypt(originalText= "hello" ,shiftAmount= 2)
 
 
+# CAESAR CIPHER
+
+direction = str(input("Type 'encode' to encrypt, type 'decode' to decrypt': ").lower())
+
+original_text = str(input("Enter your message: \n").lower())
+shift = int(input("Enter the shift number: \n"))
 # Given Solution
 
-word = "hello"
-shift_val = 2 
-cipher_text = ""
+#encode
+def encrypt(original_text,shift):
+    cipher_text = ""
+    for i in original_text:
+        shifted_val = letters.index(i) + shift
+        shifted_val = shifted_val % len(letters) 
+        cipher_text += letters[shifted_val]
+    print(f"Your encoded value is: {cipher_text}")
 
-for i in word:
-    shifted_val = letters.index(i) + shift_val
-    shifted_val = shifted_val % len(letters) 
-    cipher_text += letters[shifted_val]
+# Decode
 
-print(cipher_text)
+def decrypt(original_text, shift):
+    cipher_val = ""
+    for letter in original_text:
+        shifting_val = letters.index(letter) - shift
+        new_val = shifting_val % len(letters)
+        cipher_val += letters[new_val]
+    print(f"Your decoded value is: {cipher_val}")
+
+# decrypt(original_text="jgnnq",shift=2)
+
+def caesar():
+    if direction == "encode":
+        encrypt(original_text,shift)
+    elif direction == "decode":
+        decrypt(original_text,shift)
+    else:
+        print("Please enter 'encode' or 'decode'.")
+
+caesar()
