@@ -83,19 +83,15 @@ print("".join(letters))
 
 def encrypt(originalText, shiftAmount):
     new_word = ""
-    for i in originalText:
-        for j in letters:
-            if i == j:
-                index_val = letters.index(j)
-                # print(index_val)
-                new_index = index_val + shiftAmount
-                if new_index >= len(letters):
-                    difference = len(letters) - index_val
-                    # print(difference)
-                    shift_diff = shiftAmount - difference
-                    # print(shift_diff)
-                    new_index = 0 + shift_diff
-                new_word += letters[new_index]
+    for i in originalText: 
+            index_val = letters.index(i)
+            # print(index_val)
+            new_index = index_val + shiftAmount
+            if new_index >= len(letters):
+                difference = len(letters) - index_val
+                shift_diff = shiftAmount - difference
+                new_index =  shift_diff
+            new_word += letters[new_index]
 
     print(new_word)
 
@@ -110,6 +106,7 @@ cipher_text = ""
 
 for i in word:
     shifted_val = letters.index(i) + shift_val
+    shifted_val = shifted_val % len(letters) 
     cipher_text += letters[shifted_val]
 
 print(cipher_text)
