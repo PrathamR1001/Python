@@ -121,18 +121,23 @@ def decrypt(original_text, shift):
     cipher_val = ""
     for letter in original_text:
         shifting_val = letters.index(letter) - shift
-        new_val = shifting_val % len(letters)
-        cipher_val += letters[new_val]
+        shifting_val = shifting_val % len(letters)
+        cipher_val += letters[shifting_val]
     print(f"Your decoded value is: {cipher_val}")
 
 # decrypt(original_text="jgnnq",shift=2)
 
 def caesar():
-    if direction == "encode":
-        encrypt(original_text,shift)
-    elif direction == "decode":
-        decrypt(original_text,shift)
-    else:
-        print("Please enter 'encode' or 'decode'.")
+    cipher_val = ""
+    for letter in original_text:
+        if direction == 'encode':
+            shifting_val = letters.index(letter) + shift
+        elif direction == 'decode':    
+            shifting_val = letters.index(letter) - shift
+        
+        shifting_val = shifting_val % len(letters)
+        cipher_val += letters[shifting_val]
+            
+    print(f"Your {direction}d result is: {cipher_val}")
 
 caesar()
