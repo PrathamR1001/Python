@@ -79,6 +79,8 @@ print("".join(letters))
 # originalText = "abcde"
 # shiftAmount = 1
 
+# My solution
+
 def encrypt(originalText, shiftAmount):
     new_word = ""
     for i in originalText:
@@ -98,6 +100,9 @@ def encrypt(originalText, shiftAmount):
     print(new_word)
 
 encrypt(originalText= "hello" ,shiftAmount= 2)
+
+
+# Given Solution
 
 word = "hello"
 shift_val = 2 
