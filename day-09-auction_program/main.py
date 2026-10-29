@@ -1,34 +1,32 @@
-# get 1st bidders details >> name and bid (store)
-# ask if any more bidders >> if yes >> continue with getting bidder details
-# else tally the stored values and return highest bidder details
+bid_detailed_dict = {}
+
+def get_details():
+    
+    name = str(input("Enter your name: \n").lower())
+    bid_value = int(input("Enter your bid value: \n"))
+
+    bid_detailed_dict[name] = [bid_value]
+
+    return bid_detailed_dict
 
 
-def get_bidder_details():
-    bidder_details = {"name": [], "bid_value": []}
-
-    name = str(input("Enter your name: "))
-    bid_value = int(input("Enter your bid value: "))
-
-    bidder_details["name"].append(name)
-    bidder_details["bid_value"].append(bid_value)
-
-    return print(bidder_details)
-
-def auction_program(bidder_details):
-
+def auction_program():
     should_continue = True
 
     while should_continue:
-        get_bidder_details()
 
-        restart = str(input("Are there any more bidders, type 'yes' or 'no': " ).lower())
+        get_details()
 
-        if restart == "no":
-            should_continue = False
+        max_bid = 0
+        highest_bidder = ""
+        for k,v in bid_detailed_dict.items():
+            if v[0] > max_bid:
+                max_bid = v[0]
+                highest_bidder = k
 
-            print("GoodBye.")
+        restart = str(input("Are there any more bidders, 'yes' or 'no': \n"))
+        if restart == 'no':
+                print(f"Highest bidder was {highest_bidder} with bid of ${max_bid}")
+                should_continue = False
 
-
-
-    return print(bidder_details)
-
+auction_program()
