@@ -25,8 +25,8 @@ def auction_program():
         max_bid = 0
         highest_bidder = ""
         # for k,v in bid_detailed_dict.items():
-        #     if v[0] > max_bid:
-        #         max_bid = v[0]
+        #     if v > max_bid:
+        #         max_bid = v
         #         highest_bidder = k
         for key in bid_detailed_dict:
             bid_amount = bid_detailed_dict[key]
