@@ -100,10 +100,7 @@ letters = list(string.ascii_lowercase)
 
 # CAESAR CIPHER
 
-direction = str(input("Type 'encode' to encrypt, type 'decode' to decrypt': ").lower())
 
-original_text = str(input("Enter your message: \n").lower())
-shift = int(input("Enter the shift number: \n"))
 # Given Solution
 
 #encode
@@ -127,17 +124,37 @@ def decrypt(original_text, shift):
 
 # decrypt(original_text="jgnnq",shift=2)
 
-def caesar():
+def caesar(original_text, shift, direction):
     cipher_val = ""
+    
+
     for letter in original_text:
-        if direction == 'encode':
-            shifting_val = letters.index(letter) + shift
-        elif direction == 'decode':    
-            shifting_val = letters.index(letter) - shift
-        
-        shifting_val = shifting_val % len(letters)
-        cipher_val += letters[shifting_val]
+        if letter not in letters:
+            cipher_val += letter
+
+        else:
+            if direction == 'encode':
+                shifting_val = letters.index(letter) + shift
+            elif direction == 'decode':    
+                shifting_val = letters.index(letter) - shift
+            
+            shifting_val = shifting_val % len(letters)
+            cipher_val += letters[shifting_val]
             
     print(f"Your {direction}d result is: {cipher_val}")
 
-caesar()
+# caesar(original_text,  )
+
+should_continue = True
+
+while should_continue:
+    direction = str(input("Type 'encode' to encrypt, type 'decode' to decrypt': ").lower())
+    original_text = str(input("Enter your message: \n").lower())
+    shift = int(input("Enter the shift number: \n"))
+
+    caesar(original_text=original_text, shift=shift, direction=direction)
+
+    restart = input("Types 'yes' if you want to continue, else type 'no'. \n")
+    if restart == "no":
+        should_continue = False
+        print("GoodBye")
