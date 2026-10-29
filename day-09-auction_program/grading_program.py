@@ -21,3 +21,20 @@ for key in student_scores:
         student_grades[key] = "Fail"
 
 print(student_grades)
+
+
+
+# Nested List and dictionaries
+
+travel_log = {
+     "Germany": {
+          "cities_visited" : ["Berlin", "Hamburg", "Stuttgart"],
+          "total_visits" : 5
+     },
+}
+# Get Stuttgart
+
+print(travel_log["Germany"]["cities_visited"][2])
+
+for key in travel_log:
+    print(key)
