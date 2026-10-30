@@ -19,7 +19,6 @@ def divide(num1,num2):
 def calculation():
     if operation == '+':
         add(num1=num1, num2=num2)
-  
     elif operation == '-':
         subtract(num1=num1, num2=num2)
     elif operation == '*':
@@ -34,8 +33,9 @@ should_continue = True
 while should_continue:
     
     num1 = int(input("Enter 1st value :\n >>  "))
+    operation = str(input("Enter operation to perform \n+\n-\n/\n* \n  "))
     num2 = int(input("Enter 2nd value :\n >>  "))
-    operation = str(input("Enter operation to perform '+','-','/','*': \n>>  "))
+    
 
     
     calculation()
