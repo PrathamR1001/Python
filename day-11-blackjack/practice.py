@@ -9,13 +9,14 @@ ace = [11,1]
 cards = [2,3,4,5,6,7,8,9,10,10,10,10]
 
 
+ 
 print(cards)
 
 player_cards = random.choices(cards, k=2)
 dealer_cards = random.choices(cards, k=2)
 
-
-print(player_cards,dealer_cards)
+dealer_visible_card = random.choice(dealer_cards)
+print(player_cards,dealer_cards,dealer_visible_card)
 
 
 # Calculate player's score
