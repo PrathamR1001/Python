@@ -27,8 +27,22 @@ print(player_score, dealer_score)
 
 # If player has Blackjack:
 #     handle Blackjack
+if player_score == 21:
+    print("Blackjack, Player wins !!")
 
 # Otherwise:
+else:
+    player_input = str(input("Do you want another card, y or n: ").lower())
+    if player_input == 'y':
+        player_cards.append(random.choice(cards))
+        player_score = sum(player_cards)
+        print(player_cards)
+        print(player_score)
+        
+        pass
+    elif player_input == 'n':
+        pass
+
 
 #     Ask player:
 #         "Do you want another card?"
@@ -51,6 +65,12 @@ print(player_score, dealer_score)
 
 #     calculate dealer's score
 
+while dealer_score < 17:
+    dealer_cards.append(random.choice(cards))
+    dealer_score = sum(dealer_cards)
+
+print(f"Dealer cards are: {dealer_cards}")
+print(f"dealer score is : {dealer_score}")
 #     while dealer score < 17:
 #         give dealer another card
 
