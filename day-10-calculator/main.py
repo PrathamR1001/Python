@@ -11,39 +11,39 @@ def multiply(num1,num2):
 def divide(num1,num2):
     return num1 / num2
 
-# num1 = float(input("Enter 1st value :\n >>  "))
-# operation = str(input("Enter operation to perform \n+\n-\n/\n* \n  "))
-# num2 = float(input("Enter 2nd value :\n >>  "))
+num1 = float(input("Enter 1st value :\n >>  "))
+operation = str(input("Enter operation to perform \n+\n-\n/\n* \n  "))
+num2 = float(input("Enter 2nd value :\n >>  "))
 
-# def calculation():
-#     if operation == '+':
-#         add(num1=num1, num2=num2)
-#     elif operation == '-':
-#         subtract(num1=num1, num2=num2)
-#     elif operation == '*':
-#         multiply(num1=num1, num2=num2)
-#     elif operation == '/':
-#         divide(num1=num1, num2=num2)
-#     else:
-#         print("Please enter correct operation")
+def calculation():
+    if operation == '+':
+        add(num1=num1, num2=num2)
+    elif operation == '-':
+        subtract(num1=num1, num2=num2)
+    elif operation == '*':
+        multiply(num1=num1, num2=num2)
+    elif operation == '/':
+        divide(num1=num1, num2=num2)
+    else:
+        print("Please enter correct operation")
 
 
-# should_continue = True
-# while should_continue:
+should_continue = True
+while should_continue:
     
-#     num1 = int(input("Enter 1st value :\n >>  "))
-#     operation = str(input("Enter operation to perform \n+\n-\n/\n* \n  "))
-#     num2 = int(input("Enter 2nd value :\n >>  "))
+    num1 = int(input("Enter 1st value :\n >>  "))
+    operation = str(input("Enter operation to perform \n+\n-\n/\n* \n  "))
+    num2 = int(input("Enter 2nd value :\n >>  "))
     
 
     
-#     calculation()
+    calculation()
 
-#     restart = str(input("\nDo you want to continue 'y', 'n': \n"))
+    restart = str(input("\nDo you want to continue 'y', 'n': \n"))
 
-#     if restart == 'n':
-#         should_continue = False
-#         print("GoodBye")
+    if restart == 'n':
+        should_continue = False
+        print("GoodBye")
 
 
 # 2nd Approach using a dictionary
