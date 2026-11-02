@@ -5,16 +5,24 @@ import random
 cards = [2,3,4,5,6,7,8,9,10,10,10,10]
 
 # Deal cards
+def deal_cards():
+    return random.choice(cards)
+
+# Player Score
+def calculate_score(card_list):
+    return sum(card_list)
+
+
 player_cards = random.choices(cards, k=2)
 dealer_cards = random.choices(cards, k=2)
 
 # Show cards
 print(f"Your cards are: {player_cards}")
-print(f"Dealer cards : {random.choice(dealer_cards)}")
+print(f"Dealer card : {random.choice(dealer_cards)}")
 
 # Check Score
-player_score = sum(player_cards)
-dealer_score = sum(dealer_cards)
+player_score = calculate_score(player_cards)
+dealer_score = calculate_score(dealer_cards)
 
 # Player turn
 
@@ -24,8 +32,8 @@ while should_continue:
     player_input = str(input("Do you want to hit y or n: ").lower())
 
     if player_input == 'y' :
-        player_cards.append(random.choice(cards))
-        player_score = sum(player_cards)
+        player_cards.append(deal_cards())
+        player_score = calculate_score(player_cards)
         print(f"Your cards are: {player_cards}")
         print(f"Your score is : {player_score}")
         if player_score > 21:
@@ -42,12 +50,17 @@ while should_continue:
 # Dealer's turn
 if player_score < 21 :
     while dealer_score < 17:
-        dealer_cards.append(random.choice(cards))
-        dealer_score = sum(dealer_cards)
+        dealer_cards.append(deal_cards())
+        dealer_score = calculate_score(dealer_cards)
     print(f"Dealer score is : {dealer_score}")
 
 
-if player_score > 21:
+# Find the winner
+if player_score == 21:
+    print("Blackjack. Player Wins!!")
+elif dealer_score == 21:
+    print("Blackjack. Dealer Wins!!")
+elif player_score > 21:
     print("Dealer Wins !!")
 elif dealer_score > 21:
     print("Player Wins !!")
