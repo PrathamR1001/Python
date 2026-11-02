@@ -26,9 +26,9 @@ dealer_score = calculate_score(dealer_cards)
 
 # Player turn
 
-should_continue = True
+player_turn = True
 
-while should_continue:
+while player_turn:
     player_input = str(input("Do you want to hit y or n: ").lower())
 
     if player_input == 'y' :
@@ -37,11 +37,11 @@ while should_continue:
         print(f"Your cards are: {player_cards}")
         print(f"Your score is : {player_score}")
         if player_score > 21:
-            should_continue = False
+            player_turn = False
             print("You lose.")
             
     elif player_input == 'n':
-        should_continue = False
+        player_turn = False
     else:
         print("Please enter y or n")
 
