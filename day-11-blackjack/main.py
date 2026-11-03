@@ -4,6 +4,7 @@ import random
 
 cards = [2,3,4,5,6,7,8,9,10,10,10,10]
 
+
 # Deal cards
 def deal_cards():
     return random.choice(cards)
