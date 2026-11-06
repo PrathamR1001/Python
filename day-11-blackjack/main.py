@@ -23,25 +23,44 @@ print(f"Dealer Card: {dealer_cards}")
 
 # Ace Calculation logic
 
-def ace_function(cards_list):
-    if "ace" in cards_list:
-        cards_list.remove("ace")
-        print(cards_list)
+# def ace_function(cards_list):
+#     if "ace" in cards_list:
+#         cards_list.remove("ace")
+#         print(cards_list)
         
-        difference = 21 - sum(cards_list)
+#         difference = 21 - sum(cards_list)
         
-        if difference >= 11:
-            # print(f"difference V1 is {difference}")
-            ace_val = 11
-            # cards_list.append(ace_val)
-            # print(cards_list)
-        elif difference < 11:
-            # print(f"difference V2 is {difference}")
-            ace_val = 1
-        cards_list.append(ace_val)
-        print(cards_list)
-    return cards_list
+#         if difference >= 11:
+#             # print(f"difference V1 is {difference}")
+#             ace_val = 11
+#             # cards_list.append(ace_val)
+#             # print(cards_list)
+#         elif difference < 11:
+#             # print(f"difference V2 is {difference}")
+#             ace_val = 1
+#         cards_list.append(ace_val)
+#         print(cards_list)
+#     return cards_list
 
+def ace_function(cards_list):
+    new_cards = []
+
+    # Initially consider every Ace as 11
+    for card in cards_list:
+        if card == "ace":
+            new_cards.append(11)
+        else:
+            new_cards.append(card)
+
+    total = sum(new_cards)
+
+    # Change Ace from 11 to 1 if necessary
+    while total > 21 and 11 in new_cards:
+        new_cards.remove(11)
+        new_cards.append(1)
+        total = sum(new_cards)
+
+    return new_cards
 
 # Card Dealing Function
 def deal_cards(cards_list):
