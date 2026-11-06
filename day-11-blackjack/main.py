@@ -67,12 +67,17 @@ def deal_cards(cards_list):
     return cards_list.append(random.choice(cards))
 
 
+# # Score Calculation Function
+# def calculate_score(cards_list):
+#     ace_function(cards_list)
+#     total = int(sum(cards_list))
+#     return total
+
 # Score Calculation Function
 def calculate_score(cards_list):
-    ace_function(cards_list)
-    total = int(sum(cards_list))
+    updated_cards = ace_function(cards_list)
+    total = sum(updated_cards)
     return total
-
 
 # Player Turn
 # def player_turn():
