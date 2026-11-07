@@ -153,20 +153,39 @@ print(f"Player Cards: {player_cards}, Player Score is {player_score}.")
 
 
 # Dealer Turn
-# def dealer_turn():
-dealer_score = calculate_score(dealer_cards)
-print(f"Dealer Score : {dealer_score}")
+# Dealer's Turn
 
-while dealer_score < 17 and player_ingame:
-    
-    deal_cards(dealer_cards)
+if player_ingame:
+
+    print(f"\nDealer's cards: {dealer_cards}")
+
     dealer_score = calculate_score(dealer_cards)
+    print(f"Dealer's score: {dealer_score}")
 
-if dealer_score > 21:
-    print(f"Player Wins. Dealer Score is {dealer_score}.")
-elif dealer_score == 21:
-    print(f"Dealer Wins. BlackJack. \n Dealer Score is {dealer_score}")
-elif dealer_score > player_score:
-    print(f"Dealer Wins.\nPlayer Score: {player_score}.\nDealer Score:{dealer_score}")
-elif player_score > dealer_score:
-    print(f"Player Wins.\nPlayer Score: {player_score}.\nDealer Score:{dealer_score}")
+    while dealer_score < 17:
+        deal_cards(dealer_cards)
+
+        dealer_score = calculate_score(dealer_cards)
+
+        print(f"Dealer draws: {dealer_cards}")
+        print(f"Dealer's score: {dealer_score}")
+
+    print(f"\nDealer's final score: {dealer_score}")
+
+# def dealer_turn():
+# dealer_score = calculate_score(dealer_cards)
+# print(f"Dealer Score : {dealer_score}")
+
+# while dealer_score < 17 and player_ingame:
+    
+#     deal_cards(dealer_cards)
+#     dealer_score = calculate_score(dealer_cards)
+
+# if dealer_score > 21:
+#     print(f"Player Wins. Dealer Score is {dealer_score}.")
+# elif dealer_score == 21:
+#     print(f"Dealer Wins. BlackJack. \n Dealer Score is {dealer_score}")
+# elif dealer_score > player_score:
+#     print(f"Dealer Wins.\nPlayer Score: {player_score}.\nDealer Score:{dealer_score}")
+# elif player_score > dealer_score:
+#     print(f"Player Wins.\nPlayer Score: {player_score}.\nDealer Score:{dealer_score}")
