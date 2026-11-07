@@ -81,36 +81,71 @@ def calculate_score(cards_list):
 
 # Player Turn
 # def player_turn():
+# player_turn = True
+# player_ingame = True
+
+# Player Turn
 player_turn = True
 player_ingame = True
 
 while player_turn:
-    player_input = str(input("Do you want a hit, y or n: \n").lower())
-    total = calculate_score(player_cards)
-    if player_input == "n":
-        if total > 21 :
-            print(f"You Lose. Your total is {total}.")
-            player_ingame = False
-            player_turn = False
-        elif total == 21:
-            print(f"BlackJack. Player Wins. \nScore: {total}")
-            player_ingame = False
-            player_turn = False       
-        print("Dealer Turn")
+    player_score = calculate_score(player_cards)
+
+    print(f"Your cards: {player_cards}")
+    print(f"Your score: {player_score}")
+
+    # Check if player has busted
+    if player_score > 21:
+        print("You Bust! Dealer Wins.")
+        player_ingame = False
         player_turn = False
-    elif player_input == "y":
-        # total = calculate_score(player_cards)
-        if total < 21:    
+
+    # Player reached 21
+    elif player_score == 21:
+        print("You reached 21!")
+        player_turn = False
+
+    # Player can continue playing
+    else:
+        player_input = input("Do you want to hit? y or n: ").lower()
+
+        if player_input == "y":
             deal_cards(player_cards)
-            print(player_cards)
-        elif total > 21 :
-            player_ingame = False
-            print(f"You Lose. Your total is {total}.")
+
+        elif player_input == "n":
+            print("You Stand.")
             player_turn = False
-        elif total == 21:
-            print(f"BlackJack. Player Wins. \nScore: {total}")
-            player_ingame = False
-            player_turn = False
+
+        else:
+            print("Please enter y or n.")
+
+# while player_turn:
+#     player_input = str(input("Do you want a hit, y or n: \n").lower())
+#     total = calculate_score(player_cards)
+#     if player_input == "n":
+#         if total > 21 :
+#             print(f"You Lose. Your total is {total}.")
+#             player_ingame = False
+#             player_turn = False
+#         elif total == 21:
+#             print(f"BlackJack. Player Wins. \nScore: {total}")
+#             player_ingame = False
+#             player_turn = False       
+#         print("Dealer Turn")
+#         player_turn = False
+#     elif player_input == "y":
+#         # total = calculate_score(player_cards)
+#         if total < 21:    
+#             deal_cards(player_cards)
+#             print(player_cards)
+#         elif total > 21 :
+#             player_ingame = False
+#             print(f"You Lose. Your total is {total}.")
+#             player_turn = False
+#         elif total == 21:
+#             print(f"BlackJack. Player Wins. \nScore: {total}")
+#             player_ingame = False
+#             player_turn = False
 
 player_score = calculate_score(player_cards)
 print(f"Player Cards: {player_cards}, Player Score is {player_score}.")
