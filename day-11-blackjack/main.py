@@ -189,3 +189,20 @@ if player_ingame:
 #     print(f"Dealer Wins.\nPlayer Score: {player_score}.\nDealer Score:{dealer_score}")
 # elif player_score > dealer_score:
 #     print(f"Player Wins.\nPlayer Score: {player_score}.\nDealer Score:{dealer_score}")
+
+
+# Find the Winner
+
+if player_ingame:
+
+    if dealer_score > 21:
+        print("Dealer Bust! Player Wins!")
+
+    elif player_score > dealer_score:
+        print("Player Wins!")
+
+    elif dealer_score > player_score:
+        print("Dealer Wins!")
+
+    else:
+        print("It's a Draw!")
