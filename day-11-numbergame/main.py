@@ -58,3 +58,16 @@ for i in range(attempts_remaining):
 
 if attempts_remaining == 0:
     print(f"You ran out of attempts! The number was {my_input}")
+
+
+difficulty = input("Choose difficulty: easy or hard: ").lower()
+
+if difficulty == "easy":
+    attempts_remaining = 10
+
+elif difficulty == "hard":
+    attempts_remaining = 5
+
+else:
+    print("Invalid difficulty. Defaulting to easy.")
+    attempts_remaining = 10
