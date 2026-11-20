@@ -2,40 +2,67 @@ import random
 
 # Number guessing game
 
-print("Welcome to the number guessing game !!\n")
+LOWER = 1
+UPPER = 100
+DIFFICULTIES = {"easy": 10, "hard": 5}
 
-my_input = random.randint(1, 100)
 
-attempts_remaining = 10
+def ask_difficulty():
+    """Ask for a difficulty until a valid one is given, return the attempt count."""
+    while True:
+        choice = input("Choose difficulty: easy or hard: ").strip().lower()
+        if choice in DIFFICULTIES:
+            return DIFFICULTIES[choice]
+        print("Invalid difficulty. Please type 'easy' or 'hard'.")
 
-for i in range(attempts_remaining):
 
-    user_input = int(input("Enter a number between 1 and 100: \n"))
+def ask_guess():
+    """Ask for a guess until it is a number inside the range, then return it."""
+    while True:
+        answer = input(f"Enter a number between {LOWER} and {UPPER}: ").strip()
+        try:
+            guess = int(answer)
+        except ValueError:
+            print("That's not a whole number. Try again.")
+            continue
 
-    if user_input > my_input:
+        if LOWER <= guess <= UPPER:
+            return guess
+        print(f"Out of range. Stay between {LOWER} and {UPPER}.")
+
+
+def play_round():
+    secret = random.randint(LOWER, UPPER)
+    attempts_remaining = ask_difficulty()
+
+    while attempts_remaining > 0:
+        guess = ask_guess()
         attempts_remaining -= 1
-        print(f"Too High. Attempts Remaining: {attempts_remaining}")
 
-    elif user_input < my_input:
-        attempts_remaining -= 1
-        print(f"Too Low. Attempts Remaining: {attempts_remaining}")
+        if guess == secret:
+            print(f"You guessed it! The answer is {secret}")
+            return
 
-    else:
-        print(f"You guessed it! The answer is {my_input}")
-        break
+        hint = "Too High" if guess > secret else "Too Low"
+        if attempts_remaining:
+            print(f"{hint}. Attempts Remaining: {attempts_remaining}\n")
+        else:
+            print(hint)
 
-if attempts_remaining == 0:
-    print(f"You ran out of attempts! The number was {my_input}")
+    print(f"You ran out of attempts! The number was {secret}")
 
 
-difficulty = input("Choose difficulty: easy or hard: ").lower()
+def main():
+    print("Welcome to the number guessing game !!\n")
+    while True:
+        play_round()
+        if input("\nPlay again? (y/n): ").strip().lower() not in ("y", "yes"):
+            print("Thanks for playing!")
+            return
 
-if difficulty == "easy":
-    attempts_remaining = 10
 
-elif difficulty == "hard":
-    attempts_remaining = 5
-
-else:
-    print("Invalid difficulty. Defaulting to easy.")
-    attempts_remaining = 10
+if __name__ == "__main__":
+    try:
+        main()
+    except (KeyboardInterrupt, EOFError):
+        print("\nGame cancelled. Bye!")
